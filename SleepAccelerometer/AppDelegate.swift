@@ -1,23 +1,28 @@
-//
-//  AppDelegate.swift
-//  SleepAccelerometer
-//
-//  Created by Olivia Walch on 5/9/18.
-//  Copyright © 2018 Olivia Walch. All rights reserved.
-//
 
 import UIKit
+import CoreData
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var watchManager = WatchManager()
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let navigationBarAppearance = UINavigationBar.appearance()
+        
+        navigationBarAppearance.tintColor = UIColor.green
+        navigationBarAppearance.barTintColor = UIColor.black
+        
+        if let vc = window?.rootViewController as? MainTableViewController {
+            vc.watchManager = watchManager;
+        }
+        UIApplication.shared.isStatusBarHidden = true
         return true
     }
+
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -41,6 +46,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "Data")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error {
+                
+                fatalError("Unresolved error, \((error as NSError).userInfo)")
+            }
+        })
+        return container
+    }()
+
+    
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) {
+        
+    }
+    
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        
+    }
+    
+    func sessionDidDeactivate(_ session: WCSession) {
+        
+    }
 
 }
 

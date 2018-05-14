@@ -41,5 +41,48 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+    
+    <key>NSCameraUsageDescription</key>
+    <string>The app does not use a camera</string>
+    <key>NSHealthShareUsageDescription</key>
+    <string>Improve circadian estimate</string>
+    <key>NSHealthUpdateUsageDescription</key>
+    <string>Improve circadian estimate</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>We use GPS to improve light estimate</string>
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>We use GPS to improve light estimate</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>We use GPS to improve light estimate</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>The app does not use the microphone</string>
+    <key>NSMotionUsageDescription</key>
+    <string>The app uses motion to better estimate your circadian state</string>
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array>
+    <key>UILaunchStoryboardName</key>
+    <string>LaunchScreen</string>
+    <key>UIMainStoryboardFile</key>
+    <string>Main</string>
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>armv7</string>
+        <string>healthkit</string>
+    </array>
+    <key>UISupportedInterfaceOrientations</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+    </array>
+    <key>UISupportedInterfaceOrientations~ipad</key>
+    <array>
+        <string>UIInterfaceOrientationPortrait</string>
+        <string>UIInterfaceOrientationPortraitUpsideDown</string>
+        <string>UIInterfaceOrientationLandscapeLeft</string>
+        <string>UIInterfaceOrientationLandscapeRight</string>
+    </array>
+    <key>UIViewControllerBasedStatusBarAppearance</key>
+    <false/>
 </dict>
 </plist>

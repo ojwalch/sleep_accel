@@ -1,10 +1,3 @@
-//
-//  InterfaceController.swift
-//  SleepAccelerometer WatchKit Extension
-//
-//  Created by Olivia Walch on 5/9/18.
-//  Copyright © 2018 Olivia Walch. All rights reserved.
-//
 
 import WatchKit
 import Foundation

@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AgC-eL-Hgc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sZ-4u-y6n">
+    <device id="watch38" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="11055"/>
+        <deployment identifier="watchOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
         <scene sceneID="aou-V4-d1y">
             <objects>
-                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModuleProvider="target"/>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="SleepAccelerometer_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="220" y="345"/>
         </scene>
@@ -31,9 +35,65 @@
         <!--Notification Controller-->
         <scene sceneID="ZPc-GJ-vnh">
             <objects>
-                <controller id="4sK-HA-Art" customClass="NotificationController" customModuleProvider="target"/>
+                <controller id="4sK-HA-Art" customClass="NotificationController" customModule="SleepAccelerometer_WatchKit_App" customModuleProvider="target"/>
             </objects>
             <point key="canvasLocation" x="468" y="643"/>
+        </scene>
+        <!--SleepInterfaceController-->
+        <scene sceneID="4sk-5e-8H1">
+            <objects>
+                <controller identifier="SleepInterfaceController" id="J8d-w3-ECr" customClass="SleepInterfaceController" customModule="SleepAccelerometer_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" text="Recording..." id="jlW-j3-V70">
+                            <color key="textColor" red="0.31081587449999998" green="0.15158471800000001" blue="0.4177109772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </label>
+                        <button width="1" alignment="right" verticalAlignment="bottom" title="Stop" id="gNv-3v-tSO">
+                            <color key="titleColor" red="0.31081587449999998" green="0.15158471800000001" blue="0.4177109772" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="stopRecording" destination="J8d-w3-ECr" id="cXR-Qd-vuC"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="422" y="139"/>
+        </scene>
+        <!--ConfigurationInterfaceController-->
+        <scene sceneID="lN4-am-Tlz">
+            <objects>
+                <controller identifier="ConfigurationInterfaceController" id="7sZ-4u-y6n" customClass="ConfigurationInterfaceController" customModule="SleepAccelerometer_WatchKit_Extension">
+                    <items>
+                        <label width="136" alignment="left" text="Click button to start recording sleep" textAlignment="center" numberOfLines="0" id="JGC-Pr-zs7"/>
+                        <button width="136" alignment="left" verticalAlignment="bottom" title="Start" id="Vtf-iw-suu">
+                            <connections>
+                                <action selector="beginRecording" destination="7sZ-4u-y6n" id="aC7-KJ-6fB"/>
+                            </connections>
+                        </button>
+                    </items>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="6" y="120"/>
+        </scene>
+        <!--CompletionInterfaceController-->
+        <scene sceneID="XWA-vb-Pq4">
+            <objects>
+                <controller identifier="CompletionInterfaceController" id="P0y-zV-ZqY" customClass="CompletionInterfaceController" customModule="SleepAccelerometer_WatchKit_Extension">
+                    <items>
+                        <label alignment="left" id="OJW-v2-duw">
+                            <color key="textColor" red="1" green="0.97880674710000004" blue="0.13324607359999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </label>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Done" id="GeQ-x6-WXv">
+                            <connections>
+                                <action selector="doneTapped" destination="P0y-zV-ZqY" id="NaR-8Q-n7V"/>
+                            </connections>
+                        </button>
+                    </items>
+                    <connections>
+                        <outlet property="durationLabel" destination="OJW-v2-duw" id="oA8-dV-odT"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="682" y="2"/>
         </scene>
     </scenes>
 </document>
