@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZXM-jz-7YI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CAy-jE-czl">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main Table View Controller-->
+        <!--Recorded Sleep Events-->
         <scene sceneID="7R4-Ej-jEI">
             <objects>
                 <tableViewController id="ZXM-jz-7YI" customClass="MainTableViewController" customModule="SleepAccelerometer" customModuleProvider="target" sceneMemberID="viewController">
@@ -32,10 +32,35 @@
                             <outlet property="delegate" destination="ZXM-jz-7YI" id="lrG-Zx-Jto"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Recorded Sleep Events" id="LC6-cP-Ya3">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="jqx-WM-xNb">
+                            <connections>
+                                <action selector="showEditingWithSender:" destination="ZXM-jz-7YI" id="g4e-Ud-egN"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CGw-vF-Y3u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="177" y="219"/>
+            <point key="canvasLocation" x="1116" y="218.1409295352324"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="lFT-Oi-czu">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CAy-jE-czl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ZH-U9-BXo">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZXM-jz-7YI" kind="relationship" relationship="rootViewController" id="44p-Ej-5c5"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K5s-jh-8sg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176.80000000000001" y="218.1409295352324"/>
         </scene>
     </scenes>
 </document>

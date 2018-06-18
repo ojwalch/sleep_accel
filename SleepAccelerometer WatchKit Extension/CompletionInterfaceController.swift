@@ -1,5 +1,3 @@
-
-
 import WatchKit
 import Foundation
 import HealthKit

@@ -13,13 +13,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let navigationBarAppearance = UINavigationBar.appearance()
         
-        navigationBarAppearance.tintColor = UIColor.green
-        navigationBarAppearance.barTintColor = UIColor.black
+        navigationBarAppearance.tintColor = UIColor.white
+        navigationBarAppearance.barTintColor = UIColor.darkGray
         
         if let vc = window?.rootViewController as? MainTableViewController {
             vc.watchManager = watchManager;
         }
         UIApplication.shared.isStatusBarHidden = true
+        
         return true
     }
 

@@ -17,6 +17,7 @@
 		022BFDE120A740B100A4CE4D /* ConfigurationInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BFDE020A740B100A4CE4D /* ConfigurationInterfaceController.swift */; };
 		022BFDE920A757F900A4CE4D /* CompletionInterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BFDE820A757F900A4CE4D /* CompletionInterfaceController.swift */; };
 		022BFDEB20A75A7300A4CE4D /* WatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022BFDEA20A75A7300A4CE4D /* WatchManager.swift */; };
+		02C842EA20CFF95600A7EB3E /* HeartRateHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C842E920CFF95600A7EB3E /* HeartRateHandler.swift */; };
 		02C9480A20A33F550065C296 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02C9480920A33F550065C296 /* AppDelegate.swift */; };
 		02C9480F20A33F550065C296 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02C9480D20A33F550065C296 /* Main.storyboard */; };
 		02C9481120A33F580065C296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02C9481020A33F580065C296 /* Assets.xcassets */; };
@@ -108,6 +109,7 @@
 		022BFDE620A7550F00A4CE4D /* Data.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Data.xcdatamodel; sourceTree = "<group>"; };
 		022BFDE820A757F900A4CE4D /* CompletionInterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionInterfaceController.swift; sourceTree = "<group>"; };
 		022BFDEA20A75A7300A4CE4D /* WatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchManager.swift; sourceTree = "<group>"; };
+		02C842E920CFF95600A7EB3E /* HeartRateHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateHandler.swift; sourceTree = "<group>"; };
 		02C9480620A33F550065C296 /* SleepAccelerometer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepAccelerometer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02C9480920A33F550065C296 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02C9480E20A33F550065C296 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 				0223E13420A7A11E00243F2E /* HealthHelper.h */,
 				0223E13520A7A11E00243F2E /* HealthHelper.m */,
 				022BFDDC20A7224900A4CE4D /* MainTableViewController.swift */,
+				02C842E920CFF95600A7EB3E /* HeartRateHandler.swift */,
 				02D8D93C20A777ED0003A7C0 /* MainTableViewCell.swift */,
 				022BFDDE20A7229500A4CE4D /* SleepEvent.swift */,
 				022BFDEA20A75A7300A4CE4D /* WatchManager.swift */,
@@ -481,6 +484,7 @@
 				022BFDDD20A7224900A4CE4D /* MainTableViewController.swift in Sources */,
 				02D8D93B20A777B60003A7C0 /* Data.xcdatamodeld in Sources */,
 				022BFDDF20A7229500A4CE4D /* SleepEvent.swift in Sources */,
+				02C842EA20CFF95600A7EB3E /* HeartRateHandler.swift in Sources */,
 				02D8D93D20A777ED0003A7C0 /* MainTableViewCell.swift in Sources */,
 				02C9480A20A33F550065C296 /* AppDelegate.swift in Sources */,
 			);

@@ -1,11 +1,3 @@
-//
-//  SleepInterfaceController.swift
-//  SleepAccelerometer WatchKit Extension
-//
-//  Created by Olivia Walch on 5/9/18.
-//  Copyright © 2018 Olivia Walch. All rights reserved.
-//
-
 import WatchKit
 import Foundation
 import HealthKit
@@ -41,24 +33,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
         }
     }
     
-    func getTodayString() -> String{
-        
-        let date = Date()
-        let calender = Calendar.current
-        let components = calender.dateComponents([.year,.month,.day,.hour,.minute,.second], from: date)
-        
-        let year = components.year
-        let month = components.month
-        let day = components.day
-        let hour = components.hour
-        let minute = components.minute
-        let second = components.second
-        
-        let today_string = String(year!) + String(month!) + String(day!) + "_" + String(hour!) + "_" + String(minute!) + "_" +  String(second!)
-        return today_string
-        
-    }
-    
     override func awake(withContext context: Any?) {
         super.awake(withContext: context)
         watchSession = WCSession.default
@@ -88,7 +62,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
             let session = WCSession.default
             print("Attempting to post \(self.accelerometerOutputPost.count) entries to phone...")
             
-            
             session.sendMessage(["key": Double((workoutStartDate?.timeIntervalSince1970)!), "acceleration" : self.accelerometerOutputPost], replyHandler: { (response) -> Void in
                 if let response = response["response"] as? String {
                     print(response)
@@ -112,7 +85,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
         let queryPredicate = NSCompoundPredicate(andPredicateWithSubpredicates:[datePredicate, devicePredicate])
         
         let updateHandler: ((HKAnchoredObjectQuery, [HKSample]?, [HKDeletedObject]?, HKQueryAnchor?, Error?) -> Void) = { query, samples, deletedObjects, queryAnchor, error in
-             //self.process(samples: samples, quantityTypeIdentifier: quantityTypeIdentifier)
         }
         
         let query = HKAnchoredObjectQuery(type: HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier)!,
@@ -168,12 +140,8 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
             let handler:CMAccelerometerHandler = {(data: CMAccelerometerData?, error: Error?) -> Void in
                 
                 if(data != nil){
-                    
-                    //let output  = String(format:"%.7f",Date().timeIntervalSince1970) + " " + String(format: "%.7f", data!.acceleration.x) + " " + String(format: "%.7f", data!.acceleration.y) + " " + String(format: "%.7f", data!.acceleration.z) + "\n";
-                    
-                    
+                
                     let output : [Double] = [ Date().timeIntervalSince1970, data!.acceleration.x, data!.acceleration.y, data!.acceleration.z]
-                    
                     
                     // Mutated
                     self.accelerometerOutput.add(output)
@@ -201,7 +169,7 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
             
         }
         else {
-            // TO DO: Handle.
+            print("No accelerometer available.")
         }
     }
     
@@ -241,7 +209,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
     private func saveWorkout() {
         
         let configuration = workoutSession!.workoutConfiguration
-        let isIndoor = (configuration.locationType == .indoor) as NSNumber
         
         let workout = HKWorkout(activityType: configuration.activityType, start: workoutStartDate!, end: workoutEndDate!)
         

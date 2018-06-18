@@ -30,6 +30,7 @@ extension WatchManager: WCSessionDelegate {
     
     func session(_: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void){
         
+        //
         let key =  message["key"] as! Double
         let accel = message["acceleration"] as! NSArray
         
@@ -40,13 +41,10 @@ extension WatchManager: WCSessionDelegate {
             
         }
         
+        // Reply that data was written to file
         let response = "Data written to file: \(accel.count)"
-        // Reply
         replyHandler(["response": response])
-        
-        
     }
-    
     
 }
 
