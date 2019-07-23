@@ -55,7 +55,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
         healthStore.end(workoutSession!)
     }
     
-    
     func pushToPhone(){
         if WCSession.isSupported() {
             
@@ -77,7 +76,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
         
         startMotionCapture();
     }
-    
     
     func startQuery(quantityTypeIdentifier: HKQuantityTypeIdentifier) {
         let datePredicate = HKQuery.predicateForSamples(withStart: workoutStartDate, end: nil, options: .strictStartDate)
@@ -120,11 +118,9 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
         }
     }
     
-    
     func stopTimer() {
         timer?.invalidate()
     }
-    
     
     func startMotionCapture(){
         
@@ -147,7 +143,6 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
                     self.accelerometerOutput.add(output)
                     self.counter = self.counter + 1;
                     
-                    
                     // Size checked
                     if(self.threshold <= self.counter){
                         
@@ -158,9 +153,7 @@ class SleepInterfaceController: WKInterfaceController, HKWorkoutSessionDelegate,
                         
                         self.pushToPhone()
                     }
-                    
                 }
-                
             }
             
             print("Sending accelerometer updates to queue...");

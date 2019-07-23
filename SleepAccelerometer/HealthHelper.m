@@ -2,7 +2,7 @@
 
 @implementation HealthHelper
 
-// Get permission to access health data
+/* Requests access for heart rate and steps */
 -(void) getHealthPermissions{
     NSLog(@"Requesting health permissions...");
     

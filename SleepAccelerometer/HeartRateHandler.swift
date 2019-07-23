@@ -10,7 +10,7 @@ class HeartRateHandler: NSObject {
     var heartRateQuery:HKSampleQuery?
     
     // Retrieve heart rate data and save to file 
-    func retrieveHeartRate(start: Date, end: Date, path: URL) {
+    func retrieveHeartRate(start: Date, end: Date, path: URL, completionHandler: @escaping (() -> Void)) {
         
         if let sleepType = HKQuantityType.quantityType(forIdentifier: HKQuantityTypeIdentifier.heartRate)
         {
@@ -39,15 +39,14 @@ class HeartRateHandler: NSObject {
                 
                 // Write string to path
                 self.writeString(path: path)
+                completionHandler()
             }
             
             health.execute(query)
         }
     }
     
-    
     func writeString(path: URL){
-        let file = "hr.csv"
         let text = self.stringHolder.joined(separator: "\n")
         
         do {

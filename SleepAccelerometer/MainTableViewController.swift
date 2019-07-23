@@ -4,20 +4,31 @@ import CoreData
 import MessageUI
 
 class MainTableViewController: UITableViewController,MFMailComposeViewControllerDelegate {
-    
+
     var savedEvents : [Double] = [] // Holder for saved sleep events
     var watchManager : WatchManager?
     let HEADER_HEIGHT : CGFloat = 30.0
+    private let control = UIRefreshControl()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        getHealthPermissions()
         
-        // Get permissions
+        // Pull down on TableView to Refresh
+        tableView.refreshControl = control
+        tableView.refreshControl?.addTarget(self, action: #selector(refreshSleepEvents(_:)), for: .valueChanged)
+
+        savedEvents = SleepEvent.getAllEvents()
+        
+        // Configure appearance of navigation bar
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        
+    }
+    
+    func getHealthPermissions(){
         let healthHelper = HealthHelper()
         healthHelper.getHealthPermissions()
-        
-        savedEvents = SleepEvent.getAllEvents()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +36,14 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
         savedEvents = SleepEvent.getAllEvents()
     }
     
+    @objc private func refreshSleepEvents(_ sender: Any) {
+        savedEvents = SleepEvent.getAllEvents()
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.control.endRefreshing()
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -40,23 +59,18 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        // Format header
         let headerView = UIView()
         headerView.backgroundColor = UIColor.darkGray
         
         let titleLabel = UILabel(frame: CGRect(x: 0.0, y: 0.0, width: tableView.bounds.size.width, height: HEADER_HEIGHT))
-        
         titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         titleLabel.textColor = UIColor.white
         
         let subtitleText = "Select row to email data"
-        
-        let attributes = [NSAttributedStringKey.kern : 5.0]
-        titleLabel.attributedText = NSAttributedString(string: subtitleText.uppercased(), attributes: attributes as [NSAttributedStringKey : Any])
-        titleLabel.textAlignment = .center
+        let attributes = [NSAttributedString.Key.kern : 2.0]
+        titleLabel.attributedText = NSAttributedString(string: subtitleText.uppercased(), attributes: attributes as [NSAttributedString.Key : Any])
         titleLabel.textAlignment = .center
         
-        // Add label to view
         headerView.addSubview(titleLabel)
         
         return headerView
@@ -67,39 +81,23 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell", for: indexPath)
-        
-        // Get date from saved event
-        let date = Date(timeIntervalSince1970: savedEvents[indexPath.row])
-        
-        // Format it
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
-        let dateString = dateFormatter.string(from: date)
-        
-        cell.textLabel?.text =  dateString
+        cell.textLabel?.text = stringFromEpoch(savedEvents[indexPath.row])
         
         return cell
     }
     
-    // Set all rows to be editable
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
 
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
-            // Delete the row from the data source
+            // Delete saved Sleep Events
             SleepEvent.deleteAccelerationFor(startTime : savedEvents[indexPath.row])
-            
-            // Delete from savedEvents
             savedEvents.remove(at: indexPath.row)
-            
-            // Remove from TableView
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
         }
     }
     
@@ -116,20 +114,31 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
         
         let fileNameHR = "\(Int(savedEvents[indexPath.row]))" + "_hr.csv"
         let pathHR = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileNameHR)
-        
-        heartRateHandler.retrieveHeartRate(start: startDate, end: endDate, path: pathHR) // TODO: Make sure this is done before the email gets sent
-        
-        exportAsCSV(dateString:"\(Int(savedEvents[indexPath.row]))" , data: acceleration)
+
+        // Save HR as a file, then save acceleration and send both as attachments
+        heartRateHandler.retrieveHeartRate(start: startDate, end: endDate, path: pathHR){ 
+            self.exportMotionAndSendEmail(epochTime: self.savedEvents[indexPath.row], data: acceleration)
+        }
         
     }
     
-    func exportAsCSV(dateString: String, data: [[Double]]){
+    func stringFromEpoch(_ epochTime : Double) -> String{
+        let date = Date(timeIntervalSince1970: epochTime)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM dd YYYY hh:mm a"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    func exportMotionAndSendEmail(epochTime: Double, data: [[Double]]){
         
-        let fileName = dateString + ".csv" // Motion data
-        let hr_fileName = dateString + "_hr.csv" // HR data
+        let epochTimeString = "\(Int(epochTime))"
+        
+        let fileName = epochTimeString + ".csv" // Motion data
+        let hrFileName = epochTimeString + "_hr.csv" // HR data
         
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-        let hr_path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(hr_fileName)
+        let hrPath = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(hrFileName)
         
         var csvText = "Timestamp,x,y,z\n"
         
@@ -148,7 +157,7 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
                 try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 
                 // Send email with paths for CSV files
-                sendEmail(path: path!, hr_path: hr_path!)
+                sendEmail(dateString: stringFromEpoch(epochTime), path: path!, hr_path: hrPath!)
                 
             } catch {
                 
@@ -164,18 +173,17 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
     
     
     // Send email with attached CSV files
-    func sendEmail(path: URL, hr_path: URL) {
+    func sendEmail(dateString: String, path: URL, hr_path: URL) {
         
         let composeVC = MFMailComposeViewController()
         composeVC.mailComposeDelegate = self
         
         composeVC.navigationBar.tintColor  = .white
-        composeVC.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-        
+        composeVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         // Configure email
         // composeVC.setToRecipients(["your@email.here"])
-        composeVC.setSubject("Sleep event data")
+        composeVC.setSubject("Sleep event data for " + dateString)
         composeVC.setMessageBody("Sleep event data attached as CSV", isHTML: false)
         
         

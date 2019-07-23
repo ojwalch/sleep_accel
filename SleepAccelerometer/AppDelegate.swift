@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var watchManager = WatchManager()
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let navigationBarAppearance = UINavigationBar.appearance()
         
         navigationBarAppearance.tintColor = UIColor.white
