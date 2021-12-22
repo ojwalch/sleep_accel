@@ -623,7 +623,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -677,7 +677,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -692,20 +692,21 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "SleepAccelerometer WatchKit Extension/SleepAccelerometer WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W876MUHJ9H;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = VKLYFF6299;
 				INFOPLIST_FILE = "SleepAccelerometer WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometer.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometer.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7;
 			};
 			name = Debug;
 		};
@@ -715,20 +716,21 @@
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
 				CODE_SIGN_ENTITLEMENTS = "SleepAccelerometer WatchKit Extension/SleepAccelerometer WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W876MUHJ9H;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = VKLYFF6299;
 				INFOPLIST_FILE = "SleepAccelerometer WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometer.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometer.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7;
 			};
 			name = Release;
 		};
@@ -738,16 +740,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W876MUHJ9H;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = VKLYFF6299;
 				IBSC_MODULE = SleepAccelerometer_WatchKit_Extension;
 				INFOPLIST_FILE = "SleepAccelerometer WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometer.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Debug;
 		};
@@ -757,16 +760,17 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W876MUHJ9H;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = VKLYFF6299;
 				IBSC_MODULE = SleepAccelerometer_WatchKit_Extension;
 				INFOPLIST_FILE = "SleepAccelerometer WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometer.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometer.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.0;
 			};
 			name = Release;
 		};
@@ -777,13 +781,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SleepAccelerometer/SleepAccelerometer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W876MUHJ9H;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = VKLYFF6299;
 				INFOPLIST_FILE = SleepAccelerometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SleepAccelerometer/SleepAccelerometer-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -799,13 +805,15 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = SleepAccelerometer/SleepAccelerometer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = W876MUHJ9H;
+				CURRENT_PROJECT_VERSION = 6;
+				DEVELOPMENT_TEAM = VKLYFF6299;
 				INFOPLIST_FILE = SleepAccelerometer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SleepAccelerometer/SleepAccelerometer-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -826,7 +834,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -847,7 +855,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometerTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -867,7 +875,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -887,7 +895,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.ojwalch.SleepAccelerometerUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.arcascope.SleepAccelerometerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

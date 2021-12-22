@@ -66,7 +66,7 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
         titleLabel.font = UIFont.systemFont(ofSize: 12.0)
         titleLabel.textColor = UIColor.white
         
-        let subtitleText = "Select row to email data"
+        let subtitleText = "Select row to export data"
         let attributes = [NSAttributedString.Key.kern : 2.0]
         titleLabel.attributedText = NSAttributedString(string: subtitleText.uppercased(), attributes: attributes as [NSAttributedString.Key : Any])
         titleLabel.textAlignment = .center
@@ -134,7 +134,7 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
         
         let epochTimeString = "\(Int(epochTime))"
         
-        let fileName = epochTimeString + ".csv" // Motion data
+        let fileName = epochTimeString + "_acceleration.csv" // Motion data
         let hrFileName = epochTimeString + "_hr.csv" // HR data
         
         let path = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
@@ -157,8 +157,9 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
                 try csvText.write(to: path!, atomically: true, encoding: String.Encoding.utf8)
                 
                 // Send email with paths for CSV files
-                sendEmail(dateString: stringFromEpoch(epochTime), path: path!, hr_path: hrPath!)
-                
+                //sendEmail(dateString: stringFromEpoch(epochTime), path: path!, hr_path: hrPath!)
+
+              shareData(paths: [path!.absoluteURL, hrPath!.absoluteURL])
             } catch {
                 
                 print("Unable to create file")
@@ -170,7 +171,27 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
         }
         
     }
-    
+
+
+
+  func shareData(paths: [URL]) {
+    var activityItems: [URL] = []
+    for path in paths{
+      if let _ = NSData(contentsOf: path) {
+        activityItems.append(path.absoluteURL)
+      }else{
+        print("Unable to read file")
+      }
+    }
+
+    let activity = UIActivityViewController(
+      activityItems: activityItems,
+      applicationActivities: nil
+    )
+    present(activity, animated: true, completion: nil)
+
+  }
+
     
     // Send email with attached CSV files
     func sendEmail(dateString: String, path: URL, hr_path: URL) {
@@ -182,7 +203,7 @@ class MainTableViewController: UITableViewController,MFMailComposeViewController
         composeVC.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         // Configure email
-        // composeVC.setToRecipients(["your@email.here"])
+//        composeVC.setToRecipients([""])
         composeVC.setSubject("Sleep event data for " + dateString)
         composeVC.setMessageBody("Sleep event data attached as CSV", isHTML: false)
         

@@ -38,21 +38,22 @@ class HeartRateHandler: NSObject {
                 }
                 
                 // Write string to path
-                self.writeString(path: path)
-                completionHandler()
+                self.writeString(path: path, completionHandler: completionHandler)
             }
             
             health.execute(query)
         }
     }
     
-    func writeString(path: URL){
+  func writeString(path: URL, completionHandler: @escaping ()-> Void){
         let text = self.stringHolder.joined(separator: "\n")
         
         do {
             try text.write(to: path, atomically: false, encoding: String.Encoding.utf8)
             print("Save path: " + path.absoluteString)
-            
+            DispatchQueue.main.async{
+              completionHandler()
+            }
         }
         catch {
             print("Could not write HR to file");
