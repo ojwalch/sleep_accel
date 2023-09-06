@@ -36,5 +36,9 @@
 	</array>
 	<key>WKExtensionDelegateClassName</key>
 	<string>$(PRODUCT_MODULE_NAME).ExtensionDelegate</string>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>We update health data to track sleep</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We access health data to track sleep</string>
 </dict>
 </plist>
