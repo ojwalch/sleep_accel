@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="14109" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sZ-4u-y6n">
-    <device id="watch38" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="22505" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="7sZ-4u-y6n">
+    <device id="watch38"/>
     <dependencies>
         <deployment identifier="watchOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="14031"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="22022"/>
     </dependencies>
     <scenes>
         <!--Interface Controller-->
@@ -63,8 +60,8 @@
             <objects>
                 <controller identifier="ConfigurationInterfaceController" id="7sZ-4u-y6n" customClass="ConfigurationInterfaceController" customModule="SleepAccelerometer_WatchKit_Extension">
                     <items>
-                        <label width="136" alignment="left" text="Click button to start recording sleep" textAlignment="center" numberOfLines="0" id="JGC-Pr-zs7"/>
-                        <button width="136" alignment="left" verticalAlignment="bottom" title="Start" id="Vtf-iw-suu">
+                        <label width="1" alignment="left" text="Click button to start recording sleep" textAlignment="center" numberOfLines="0" id="JGC-Pr-zs7"/>
+                        <button width="1" alignment="left" verticalAlignment="bottom" title="Start" id="Vtf-iw-suu">
                             <connections>
                                 <action selector="beginRecording" destination="7sZ-4u-y6n" id="aC7-KJ-6fB"/>
                             </connections>
@@ -72,7 +69,7 @@
                     </items>
                 </controller>
             </objects>
-            <point key="canvasLocation" x="6" y="120"/>
+            <point key="canvasLocation" x="-173" y="107"/>
         </scene>
         <!--CompletionInterfaceController-->
         <scene sceneID="XWA-vb-Pq4">
